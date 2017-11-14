@@ -1,8 +1,8 @@
 import React from "react"
 import GoogleMapReact from 'google-map-react';
 import {connect} from 'react-redux'
-
-const AnyReactComponent = ({ text }) => <div className="field"><div className="ui teal pointing below basic label">{text}<button onClick={()=>{ console.log("hi")}}>Deal</button></div></div>;
+import {todays_deals} from "../services/DealDayManager"
+const AnyReactComponent = ({ text }) => <div className="field" style={{position: 'absolute', width: "62px", height: "45px", left: "-31px", top: "-26px"}}><div className="ui teal pointing below basic label">{text}<button onClick={()=>{ console.log("hi")}}>Deal</button></div></div>;
 
 class MapView extends React.Component{
   static defaultProps = {
@@ -22,8 +22,18 @@ class MapView extends React.Component{
   }
 
   deals = (df) => {
+
     return this.props.deals.map((deal, index) => {
-      return <AnyReactComponent key={index} lat={deal.lat} lng={deal.lng} text={deal.title} />
+
+      var dealDate = new Date(`${deal.deal_day} 00:00`)
+      var todaysDate = new Date()
+      if (dealDate.setHours(0,0,0,0) === todaysDate.setHours(0,0,0,0)){
+        return <AnyReactComponent key={index} lat={deal.lat} lng={deal.lng} text={deal.title} />
+      }
+      else{
+        return null
+      }
+
     })
   }
 
@@ -39,13 +49,29 @@ class MapView extends React.Component{
       return null
     }
   }
+
+  centerDate = (deals) => {
+    if(deals.length > 0){
+    let firstDeal = todays_deals(deals)[0]
+    if(firstDeal){
+      return {lat: firstDeal.lat, lng: firstDeal.lng}
+    } else{
+      return {lat: 40.78, lng: -73.97}
+    }
+
+  }
+    else{
+      return {lat: 40.78, lng: -73.97}
+    }
+  }
+
   render() {
     return (
       <GoogleMapReact
         bootstrapURLKeys={{key: "",
           language: 'en'}}
         onClick={this.handleClick.bind(this)}
-        defaultCenter={this.props.center}
+        center={this.centerDate(this.props.deals)}
         defaultZoom={this.props.zoom}
       >
         <AnyReactComponent
@@ -63,3 +89,4 @@ function mapStateToProps(state) {
   return {deals: state.manageDeals.deals}
 }
 export default connect(mapStateToProps)(MapView)
+// const height = document.getElementById('1234abc').clientWidth; console.log(height)

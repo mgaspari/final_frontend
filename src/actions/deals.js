@@ -11,11 +11,27 @@ export function createDeal (dealData) {
   }
 }
 
-function makeDeal(deal){
+export function loadDeals() {
+  return function(dispatch){
+    return fetch(`${baseUrl}/admin_deals`, {
+      headers: headersWithAuth()
+    }).then(res => res.json()).then(json =>{
+     dispatch(loadingDeals(json))})
+  }
+}
 
+
+function makeDeal(deal){
   return {
     type: "CREATE_DEAL",
     deal
+  }
+}
+
+function loadingDeals(deals){
+  return {
+    type: "LOAD_DEALS",
+    deals
   }
 }
 

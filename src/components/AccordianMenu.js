@@ -18,9 +18,6 @@ export default class AccordianMenu extends Component {
 
     return (
       <Accordion styled>
-
-
-
         <Accordion.Title active={activeIndex === 2} index={2} onClick={this.handleClick}>
           <Icon name='dropdown' />
           Create a deal

@@ -101,7 +101,7 @@ class AddressForm extends React.Component {
 }
 
 function mapStateToProps(state) {
-  
+
   return {deals: state.manageDeals.deals}
 }
 

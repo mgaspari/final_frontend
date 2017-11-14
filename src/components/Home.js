@@ -1,7 +1,15 @@
 import React from "react"
 import MapView from "./MapView"
+import {loadDeals} from "../actions/deals"
+import {connect} from 'react-redux'
+import {bindActionCreators} from "redux"
 import AccordianMenu from "./AccordianMenu"
+import AccordianDeals from "./AccordianDeals"
+
 class Home extends React.Component{
+  componentDidMount(){
+    this.props.loadDeals()
+  }
   render(){
     return(
       <div>
@@ -9,8 +17,10 @@ class Home extends React.Component{
         <MapView />
       </div>
       <AccordianMenu/>
+      <br/>
+      <AccordianDeals/>
       </div>
     )
   }
 }
-export default Home
+export default connect(null, { loadDeals })(Home)
