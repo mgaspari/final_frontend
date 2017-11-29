@@ -13,13 +13,10 @@ class Home extends React.Component{
   render(){
     return(
       <div>
-      <div style={{width: "700px", height: "700px"}}>
+      <div style={{width: "1280px", height: "850px"}}>
         <MapView />
       </div>
-      <AccordianMenu/>
-      <br/>
-      <AccordianDeals/>
-      </div>
+  </div>
     )
   }
 }

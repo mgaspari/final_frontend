@@ -32,3 +32,11 @@
   padding: 8%;
   overflow: scroll;
 }
+
+.accordians {
+  transition: width 50ms ease-in-out;
+}
+
+.ui.menu {
+  margin-bottom: 0 !important;
+}

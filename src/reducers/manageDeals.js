@@ -8,6 +8,3 @@ export default function manageDeals(state={deals: []}, action){
       return state
   }
 }
-
-// case "SET_DEALS":
-//   return Object.assign({}, state, {former_deals: action.former_deals, todays_deals: action.todays_deals, future_deals: action.future_deals})
