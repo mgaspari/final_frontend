@@ -1,4 +1,4 @@
-# Tracto Frontend Web
+# Tracto Front End Web
 
 A web and mobile app that allows businesses to post temporary deals to drive foot traffic
 
