@@ -2,7 +2,7 @@
 
 A web and mobile app that allows businesses to post temporary deals to drive foot traffic
 
-This is the back end portion of a cross platform deal app.
+This is the web portion of a cross platform deal app.
 
 The mobile portal can be found <a href="https://github.com/mgaspari/final_frontend_rn">here</a>
 
