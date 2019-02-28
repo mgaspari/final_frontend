@@ -10,13 +10,14 @@ class Home extends React.Component{
   componentDidMount(){
     this.props.loadDeals()
   }
+
   render(){
     return(
       <div>
-      <div style={{width: "1280px", height: "850px"}}>
-        <MapView />
+        <div style={{width: "1280px", height: "850px"}}>
+          <MapView />
+        </div>
       </div>
-  </div>
     )
   }
 }

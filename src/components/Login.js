@@ -14,17 +14,20 @@ class Login extends React.Component{
     event.preventDefault()
     this.props.addUser(this.state.username)
     AuthAdapter.login(this.state)
-    }
+  }
+
   handleChangeUN = (event) => {
     this.setState({
       username: event.target.value
     })
   }
+
   handleChangePW = (event) => {
     this.setState({
       password: event.target.value
     })
   }
+
   render(){
     return(
       <form onSubmit={this.submitHandler}>
@@ -39,9 +42,5 @@ class Login extends React.Component{
 const mapStateToProps = (state) => {
     return {users: state.manageUsers.users}
 }
-
-
-// It is likely that you will have to call addUser with this.state
-
 
 export const ConnectedLogin = connect(mapStateToProps, { addUser })(Login)

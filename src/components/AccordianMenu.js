@@ -24,8 +24,6 @@ class AccordianMenu extends Component {
     else if (this.props.width === "400px") {
       this.props.shrink()
     }
-
-
   }
 
   handleActiveIndex = () => {
@@ -33,7 +31,7 @@ class AccordianMenu extends Component {
       activeIndex: 0
     })
   }
-  // onClick={this.changeWidth}
+
   render() {
     const { activeIndex } = this.state
 
@@ -52,7 +50,6 @@ class AccordianMenu extends Component {
 }
 
 function mapStateToProps(state) {
-
   return {width: state.manageMenus.width}
 }
 

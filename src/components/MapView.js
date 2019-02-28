@@ -5,14 +5,6 @@ import { todays_deals } from "../services/DealDayManager";
 import MapDealPopup from "./MapDealPopup"
 import AccordianMenu from "./AccordianMenu"
 import AccordianDeals from "./AccordianDeals"
-// const AnyReactComponent = ({ text }) => (
-//
-//     <div className="ui teal pointing below basic label">
-//       {text}
-//
-//     </div>
-//
-// );
 
 class MapView extends React.Component {
   static defaultProps = {
@@ -24,7 +16,7 @@ class MapView extends React.Component {
     marks: []
   };
 
-  deals = df => {
+  deals = (df) => {
     return this.props.deals.map((deal, index) => {
       var dealDate = new Date(`${deal.deal_day} 00:00`);
       var todaysDate = new Date();
@@ -77,4 +69,3 @@ function mapStateToProps(state) {
   return { deals: state.manageDeals.deals };
 }
 export default connect(mapStateToProps)(MapView);
-// const height = document.getElementById('1234abc').clientWidth; console.log(height)

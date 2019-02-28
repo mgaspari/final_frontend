@@ -24,40 +24,27 @@ class App extends Component {
         }
       })
   }
+
   logout(){
     localStorage.removeItem('jwt')
     this.setState({ auth: { isLoggedIn: false, user:{}}})
   }
+
   componentWillMount(){
       if (localStorage.getItem('jwt')) {
        AuthAdapter.currentUser()
          .then(user => {
            if (!user.error) {
-             console.log("fetch user");
              this.setState({
                isLoggedIn: true
-             }, () => console.log(this.state.isLoggedIn))
+             })
            }
          })
      }
-    //  else {
-    //    <div>
-    //     {this.props.users ? this.logIn(this.props.users) : null}
-    //    <Route exact path="/login" render={(props) => <ConnectedLogin {...props} />} />
-    //    <Redirect to="/login"/>
-    //  </div>
-    //  }
    }
-
-  // componentWillUpdate () {
-  //   console.log('Updating')
-  //   if (!localStorage.getItem('jwt')) this.props.history.push('/login')
-  // }
-  // <button onClick={AuthAdapter.logout}>Log Out</button>
   render() {
     return (
       <div className="App">
-
         <div class="ui menu">
           <div class="header item"><img class="ui tiny image" src={require("./final_proj_logo.png")} /></div>
            <div class="right menu">
@@ -71,7 +58,6 @@ class App extends Component {
         <Route exact path='/home' render={(props)=>{ return <Home {...props}/>}} />
         <Alert stack={{limit: 3}} />
         </div>
-      
     );
   }
 }

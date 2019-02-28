@@ -9,10 +9,6 @@ import {
 } from "../services/DealDayManager";
 import { grow, shrink } from "../actions/menus";
 
-//THIS IS WHAT TO DO NEXT
-//Need to find a way to dynamically create these panels
-//Then deal with the cards
-
 const tempPan = [
   { title: "Level 1A", content: "Level 1A Contents" },
   { title: "Level 1B", content: "Level 1B Contents" }
@@ -20,6 +16,7 @@ const tempPan = [
 
 class AccordianDeals extends Component {
   state = { activeIndex: null };
+
   handleClick = (e, titleProps) => {
     const { index } = titleProps;
     const { activeIndex } = this.state;
@@ -29,8 +26,6 @@ class AccordianDeals extends Component {
   };
 
   formatted_panels = typeOfDeals => {
-    console.log(this);
-
     if (this.props.deals) {
       let filteredDeals = typeOfDeals(this.props.deals);
       return filteredDeals.map(deal => {
@@ -113,9 +108,6 @@ class AccordianDeals extends Component {
       </div>
     );
 
-    function handleTest() {
-      console.log("dsklfajsdlk");
-    }
     const rootPanels = [
       {
         title: "Today's Deals",
@@ -129,8 +121,7 @@ class AccordianDeals extends Component {
         title: "Past Deals",
         content: {
           content: Level3Content,
-          key: "content-3",
-          onClick: handleTest()
+          key: "content-3"
         }
       }
     ];
@@ -163,9 +154,3 @@ export default connect(mapStateToProps, {
   grow,
   shrink
 })(AccordianDeals);
-
-{
-  /* <div id="dealScroll">
-
-</div>  */
-}

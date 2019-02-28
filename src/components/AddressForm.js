@@ -6,7 +6,6 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from "redux"
 import Alert from 'react-s-alert';
 
-
 class AddressForm extends React.Component {
   constructor(props) {
     super(props)
@@ -41,16 +40,18 @@ class AddressForm extends React.Component {
     this.successAlert()
     this.props.handleActiveIndex()
     this.props.changeWidth()
+
     geocodeByAddress(this.state.address)
-      .then(results => {console.log(results[0].formatted_address);
+      .then(results => {
         this.setState({
           address: results[0].formatted_address
         })
-          return getLatLng(results[0])})
+
+        return getLatLng(results[0])})
       .then(latLng =>{ this.setState({
         lat: latLng.lat,
         lng: latLng.lng
-      }, () => this.props.createDeal(this.state)); console.log('Success', latLng)})
+      }, () => this.props.createDeal(this.state));})
       .catch(error => console.error('Error', error))
   }
 
@@ -78,20 +79,13 @@ class AddressForm extends React.Component {
     })
   }
 
-
-
-selectText = (event) => {
-  event.target.select()
-}
-
-isFilled = (state) => {
-  if(state.address !== 'Deal Address...' && state.address !== '' && state.date !== '' && state.description !== 'Deal Description...' && state.description !== '' && state.img_link != ''){
-    return true
-  }else{
-    return false
+  selectText = (event) => {
+    event.target.select()
   }
 
-}
+  isFilled = (state) => {
+    return (state.address !== 'Deal Address...' && state.address !== '' && state.date !== '' && state.description !== 'Deal Description...' && state.description !== '' && state.img_link != '')
+  }
 
 handleFormClick = (event) => {
   event.stopPropagation()
@@ -132,7 +126,6 @@ handleFormClick = (event) => {
 }
 
 function mapStateToProps(state) {
-
   return {deals: state.manageDeals.deals}
 }
 

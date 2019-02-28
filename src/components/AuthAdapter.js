@@ -28,9 +28,7 @@ export default class AuthAdapter {
     }).then(res => res.json()).then(json =>{
      console.log(json)})
   }
-
 }
-
 
 function headers () {
   return {
